@@ -58,6 +58,7 @@ class DayItem extends StatelessWidget {
         height: height,
         width: width,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             //if (isSelected) ...[
               //SizedBox(height: 5),
