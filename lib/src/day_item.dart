@@ -27,8 +27,8 @@ class DayItem extends StatelessWidget {
     this.dayNameColor,
   }) : super(key: key);
 
-  final double height = 70.0;
-  final double width = 60.0;
+  final double height = 60.0;
+  final double width = 50.0;
 
   _buildDay(BuildContext context) {
     final textStyle = TextStyle(
@@ -55,8 +55,8 @@ class DayItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.0),
         )
           : BoxDecoration(color: Colors.transparent),
-        //height: height,
-        //width: width,
+        height: height,
+        width: width,
         child: Column(
           children: <Widget>[
             if (isSelected) ...[
@@ -70,15 +70,12 @@ class DayItem extends StatelessWidget {
               style: isSelected ? selectedStyle : textStyle,
             ),
             if (isSelected)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  shortName,
-                  style: TextStyle(
-                    color: dayNameColor ?? activeDayColor ?? Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
+              Text(
+                shortName,
+                style: TextStyle(
+                  color: dayNameColor ?? activeDayColor ?? Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
                 ),
               ),
           ],
