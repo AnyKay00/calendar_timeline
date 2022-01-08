@@ -27,7 +27,7 @@ class DayItem extends StatelessWidget {
     this.dayNameColor,
   }) : super(key: key);
 
-  final double height = 60.0;
+  final double height = 50.0;
   final double width = 50.0;
 
   _buildDay(BuildContext context) {
@@ -60,11 +60,11 @@ class DayItem extends StatelessWidget {
         child: Column(
           children: <Widget>[
             if (isSelected) ...[
-              SizedBox(height: 7),
+              SizedBox(height: 5),
               _buildDots(),
-              SizedBox(height: 12),
+              SizedBox(height: 10),
             ] else
-              SizedBox(height: 14),
+              SizedBox(height: 10),
             Text(
               dayNumber.toString(),
               style: isSelected ? selectedStyle : textStyle,
