@@ -40,7 +40,7 @@ class DayItem extends StatelessWidget {
       fontWeight: FontWeight.normal);
     final selectedStyle = TextStyle(
       color: activeDayColor ?? Colors.white,
-      fontSize: 10,
+      fontSize: 24,
       fontWeight: FontWeight.bold,
       height: 0.8,
     );
@@ -84,7 +84,7 @@ class DayItem extends StatelessWidget {
     );
   }
 
-  Widget _buildDots() {
+ /*  Widget _buildDots() {
     final dot = Container(
       height: 5,
       width: 5,
@@ -98,7 +98,7 @@ class DayItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [dot, dot],
     );
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {

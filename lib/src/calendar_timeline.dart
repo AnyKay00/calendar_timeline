@@ -178,7 +178,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
         initialScrollIndex: _monthSelectedIndex ?? 0,
         initialAlignment: _scrollAlignment,
         itemScrollController: _controllerMonth,
-        padding: EdgeInsets.only(left: widget.leftMargin),
+        padding: EdgeInsets.only(left: widget.leftMargin, right: widget.leftMargin),
         scrollDirection: Axis.horizontal,
         itemCount: _months.length,
         itemBuilder: (BuildContext context, int index) {
