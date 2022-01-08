@@ -55,8 +55,8 @@ class DayItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.0),
         )
           : BoxDecoration(color: Colors.transparent),
-        height: height,
-        width: width,
+        //height: height,
+        //width: width,
         child: Column(
           children: <Widget>[
             if (isSelected) ...[
@@ -70,12 +70,15 @@ class DayItem extends StatelessWidget {
               style: isSelected ? selectedStyle : textStyle,
             ),
             if (isSelected)
-              Text(
-                shortName,
-                style: TextStyle(
-                  color: dayNameColor ?? activeDayColor ?? Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  shortName,
+                  style: TextStyle(
+                    color: dayNameColor ?? activeDayColor ?? Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
                 ),
               ),
           ],
