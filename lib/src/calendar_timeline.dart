@@ -109,7 +109,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
 
   @override
   Widget build(BuildContext context) {
-    _scrollAlignment = widget.leftMargin / MediaQuery.of(context).size.width;
+    _scrollAlignment = 2 / MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
