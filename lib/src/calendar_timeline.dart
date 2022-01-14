@@ -83,7 +83,8 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
   int? _yearSelectedIndex;
   int? _monthSelectedIndex;
   int? _daySelectedIndex;
-  late double _scrollAlignment;
+  late double _scrollAlignmentDays;
+  late double _scrollAlignmentMonth;
 
   List<DateTime> _years = [];
   List<DateTime> _months = [];
@@ -109,7 +110,10 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
 
   @override
   Widget build(BuildContext context) {
-    _scrollAlignment =  ((MediaQuery.of(context).size.width / 2) - 30) / MediaQuery.of(context).size.width;
+    _scrollAlignmentDays = ((MediaQuery.of(context).size.width / 2) - 30) /
+        MediaQuery.of(context).size.width;
+    _scrollAlignmentMonth =
+        widget.leftMargin / MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
@@ -130,10 +134,11 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
       child: ScrollablePositionedList.builder(
         itemScrollController: _controllerDay,
         initialScrollIndex: _daySelectedIndex ?? 0,
-        initialAlignment: _scrollAlignment,
+        initialAlignment: _scrollAlignmentDays,
         scrollDirection: Axis.horizontal,
         itemCount: _days.length,
-        padding: EdgeInsets.only(left: widget.leftMargin, right: widget.leftMargin),
+        padding:
+            EdgeInsets.only(left: widget.leftMargin, right: widget.leftMargin),
         itemBuilder: (BuildContext context, int index) {
           final currentDay = _days[index];
           final shortName =
@@ -176,9 +181,10 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
       height: 40,
       child: ScrollablePositionedList.builder(
         initialScrollIndex: _monthSelectedIndex ?? 0,
-        initialAlignment: _scrollAlignment,
+        initialAlignment: _scrollAlignmentMonth,
         itemScrollController: _controllerMonth,
-        padding: EdgeInsets.only(left: widget.leftMargin, right: widget.leftMargin),
+        padding:
+            EdgeInsets.only(left: widget.leftMargin, right: widget.leftMargin),
         scrollDirection: Axis.horizontal,
         itemCount: _months.length,
         itemBuilder: (BuildContext context, int index) {
@@ -200,7 +206,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
                     child: YearItem(
                       name: DateFormat.y(_locale).format(currentDate),
                       color: widget.monthColor,
-                      onTap: (){},
+                      onTap: () {},
                     ),
                   ),
                 MonthItem(
@@ -230,7 +236,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
       height: 40,
       child: ScrollablePositionedList.builder(
         initialScrollIndex: _yearSelectedIndex!,
-        initialAlignment: _scrollAlignment,
+        initialAlignment: _scrollAlignmentMonth,
         itemScrollController: _controllerYear,
         padding: EdgeInsets.only(left: widget.leftMargin),
         scrollDirection: Axis.horizontal,
@@ -343,7 +349,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
   void _moveToYearIndex(int index) {
     _controllerYear.scrollTo(
       index: index,
-      alignment: _scrollAlignment,
+      alignment: _scrollAlignmentMonth,
       duration: Duration(milliseconds: 500),
       curve: Curves.easeIn,
     );
@@ -359,7 +365,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
   void _moveToMonthIndex(int index) {
     _controllerMonth.scrollTo(
       index: index,
-      alignment: _scrollAlignment,
+      alignment: _scrollAlignmentMonth,
       duration: Duration(milliseconds: 500),
       curve: Curves.easeIn,
     );
@@ -376,7 +382,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
   void _moveToDayIndex(int index) {
     _controllerDay.scrollTo(
       index: index,
-      alignment: _scrollAlignment,
+      alignment: _scrollAlignmentDays,
       duration: Duration(milliseconds: 500),
       curve: Curves.easeIn,
     );
